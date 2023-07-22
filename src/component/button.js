@@ -4,8 +4,7 @@
  */
 
 import React from 'react';
-import { View } from 'react-native';
-import { Button as Btn } from 'react-native-paper';
+import { View, Button as Btn } from 'react-native';
 import { ScaledSheet } from 'react-native-size-matters';
 
 import { Colors } from '@app/constants';
@@ -19,13 +18,7 @@ const Button = ({
 }) => {
   return (
     <View style={[styles.containerStyle, containerStyle]}>
-      <Btn
-        mode={'contained'}
-        labelStyle={[styles.labelStyle, labelStyle]}
-        style={[styles.btnStyle, btnStyle]}
-        {...rest}>
-        {children}
-      </Btn>
+
     </View>
   );
 };

@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { LogBox } from 'react-native';
 
-import {NoteBookScreen} from '@app/modules/notebookScreen2';
+import { NoteBookScreen } from '@app/modules/notebook';
 
 LogBox.ignoreLogs(['Warning: ...']);
 

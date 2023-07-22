@@ -11,9 +11,23 @@ export const getStyle = () => {
     container: {
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'center',
       backgroundColor: Colors.White,
       width: '100%',
+      padding: '10@ms',
+    },
+    commentSection: {
+      flexDirection: 'row',
+      width: '100%',
+    },
+    uploadSection: {
+      width: '90%',
+      borderStyle: 'dashed',
+      borderWidth: '1@ms',
+      borderRadius: '10@ms',
+    },
+    fileEmpty: {
+      width: '50@ms',
+      height: '50@ms',
     },
     head: {
       height: '70@ms',
@@ -34,20 +48,7 @@ export const getStyle = () => {
       fontWeight: '400',
       color: Colors.Black,
     },
-    bookcontainertSection: {
-      borderWidth: '1@ms',
-      borderColor: Colors.Black,
-    },
-    commentSection: {
-      flexDirection: 'row',
-    },
-    bookContainertBorder: {
-      width: '100%',
-      borderStyle: 'dashed',
-      borderWidth: '1@ms',
-      borderRadius: '10@ms',
-      margin: '20@ms',
-    },
+
     browseText: {
       color: Colors.Primary,
     },
