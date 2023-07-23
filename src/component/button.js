@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { View, Button as Btn } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { ScaledSheet } from 'react-native-size-matters';
 
 import { Colors } from '@app/constants';
@@ -14,36 +14,39 @@ const Button = ({
   btnStyle,
   labelStyle,
   children,
+  title,
   ...rest
 }) => {
   return (
     <View style={[styles.containerStyle, containerStyle]}>
-
+      <TouchableOpacity style={[styles.btnStyle, btnStyle]}>
+        <Text style={[styles.labelStyle, labelStyle]}>{title}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = ScaledSheet.create({
   containerStyle: {
-    maxHeight: '48@ms',
-    width: '100%',
-    marginBottom: '10@ms',
-    alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
-    height: '48@ms',
+    alignItems: 'center',
   },
   btnStyle: {
-    width: '100%',
+    width: '70%',
     height: '48@ms',
     backgroundColor: Colors.Primary,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius:'25@ms',
   },
   labelStyle: {
     textTransform: 'none',
     fontSize: '16@ms',
     fontWeight: '600',
     paddingTop: '3@ms',
-    color: Colors.Black,
-    fontWeight: 'bold',
+    color: Colors.White,
+    fontWeight: 400,
   },
 });
 

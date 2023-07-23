@@ -19,12 +19,14 @@ const Input = props => {
 
 const styles = ScaledSheet.create({
   containerStyle: {
-    height: '48@ms',
-    width: '100%',
+    height: '35@ms',
+    width: '97%',
     borderColor: '#CECECE',
-    borderWidth: '1.5@ms',
+    borderWidth: '1@ms',
     marginBottom: '10@ms',
     borderRadius: '5@ms',
+    justifyContent:'center',
+    marginHorizontal:'2@ms'
   },
   input: {
     width: '100%',
