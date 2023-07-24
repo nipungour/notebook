@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DocumentPicker from 'react-native-document-picker';
 import Icon from 'react-native-vector-icons/AntDesign';
 
@@ -15,25 +15,22 @@ import { getStyle } from './styles';
 
 function NoteBookScreen() {
   const styles = getStyle();
-
-  const [mydate, setDate] = useState(new Date());
-  const [displaymode, setMode] = useState('date');
-  const [isDisplayDate, setShow] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [datePickerVisible, setDatePickerVisible] = useState(false);
   const [uploadFiles, setUploadFiles] = useState(false);
   const [uploadFile, setUploadFile] = useState(false);
 
-  const changeSelectedDate = (event, selectedDate) => {
-    const currentDate = selectedDate || mydate;
-    setDate(currentDate);
+  const showDatePicker = () => {
+    setDatePickerVisible(true);
   };
 
-  const showMode = currentMode => {
-    setShow(true);
-    setMode(currentMode);
+  const hideDatePicker = () => {
+    setDatePickerVisible(false);
   };
 
-  const displayDatepicker = () => {
-    showMode('date');
+  const handleConfirm = date => {
+    setSelectedDate(date);
+    hideDatePicker();
   };
 
   return (
@@ -96,45 +93,46 @@ function NoteBookScreen() {
               />
             </View>
           </View>
-          <Text numberOfLines={1} style={{ marginVertical: 20 }}>
-            ______________________________________________________________
-          </Text>
-          <View style={styles.commentSection}>
-            {/* Upload Sign */}
-            <TouchableOpacity style={styles.signContainer}>
-              <Icon
-                name={'upload'}
-                color={Colors.Black}
-                size={16}
-                style={{ paddingHorizontal: 5 }}
-              />
-              <Text style={styles.text}>Upload Sign</Text>
-            </TouchableOpacity>
-            <View style={styles.commentSection}>
+          <View style={{ flexDirection: 'row', marginVertical: 20 }}>
+            <View style={{ width: '33%' }}>
+              <TouchableOpacity style={styles.signContainer}>
+                <Icon
+                  name={'upload'}
+                  color={Colors.Black}
+                  size={16}
+                  style={{ paddingHorizontal: 5 }}
+                />
+                <Text style={styles.text}>Upload Sign</Text>
+              </TouchableOpacity>
               <Text style={styles.labText}>Lab Partner</Text>
-              <Text style={styles.labTexts}>Witnessed By</Text>
             </View>
-
-            {/* DatePicker */}
-            <TouchableOpacity
-              style={styles.datePickerContainer}
-              onPress={displayDatepicker}>
-              <Text style={styles.text}>DD-MM-YY</Text>
-            </TouchableOpacity>
-            {isDisplayDate && (
-              <DateTimePicker
-                testID="dateTimePicker"
-                value={mydate}
-                mode={displaymode}
-                is24Hour={true}
-                display="default"
-                onChange={changeSelectedDate}
+            <View style={{ width: '33%' }} />
+            <View style={{ width: '33%' }}>
+              {/* DatePicker */}
+              <TouchableOpacity
+                style={styles.datePickerContainer}
+                onPress={showDatePicker}>
+                <Text style={styles.text}>
+                  {' '}
+                  {selectedDate
+                    ? selectedDate.toLocaleDateString()
+                    : DD - MM - YY}
+                </Text>
+              </TouchableOpacity>
+              <Text style={styles.labTexts}>Witnessed By</Text>
+              <DateTimePickerModal
+                date={selectedDate}
+                isVisible={datePickerVisible}
+                mode="date"
+                onConfirm={handleConfirm}
+                onCancel={hideDatePicker}
               />
-            )}
+            </View>
           </View>
+        
         </View>
-
         <Button title={'Save Notes'} />
+      
       </View>
     </>
   );

@@ -9,9 +9,9 @@ import { Colors } from '@app/constants';
 export const getStyle = () => {
   return ScaledSheet.create({
     container: {
-      flex: 1,
+      // flex: 1,
       alignItems: 'center',
-      height: '100%',
+      height: 'auto',
       padding: '10@ms',
       marginHorizontal: '10@ms',
       borderColor: Colors.Gray,
@@ -48,7 +48,6 @@ export const getStyle = () => {
       fontSize: '19@ms',
     },
     subHeader: {
-      // width: '100%',
       borderWidth: '1@ms',
       borderRadius: '10@ms',
       borderColor: Colors.Gray,
@@ -86,8 +85,6 @@ export const getStyle = () => {
       alignItems: 'center',
       height: '30@ms',
       paddingHorizontal: '10@ms',
-      position: 'absolute',
-      Left: 0,
       marginHorizontal: '2@ms',
     },
     datePickerContainer: {
@@ -98,22 +95,16 @@ export const getStyle = () => {
       alignItems: 'center',
       height: '30@ms',
       paddingHorizontal: '15@ms',
-      position: 'absolute',
-      right: 0,
       marginHorizontal: '2@ms',
     },
     labText: {
       color: Colors.Black,
-      position: 'absolute',
-      top: '35@ms',
-      left: '25@ms',
+      textAlign: 'center',
       fontWeight: '600',
     },
     labTexts: {
       color: Colors.Black,
-      position: 'absolute',
-      top: '35@ms',
-      right: '5@ms',
+      textAlign: 'center',
       fontWeight: '600',
     },
   });
